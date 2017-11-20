@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:42:50 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/17 13:30:48 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:53:12 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ char	*ft_strnew(size_t size)
 {
 	char *strnew;
 
-	if ((strnew = malloc(sizeof(char) * size)) == NULL)
+	if ((strnew = malloc(sizeof(char) * size + 1)) == NULL)
 		return (NULL);
-	ft_bzero(strnew, size);
-	strnew[size + 1] = '\0';
+	ft_bzero(strnew, size + 1);
 	return (strnew);
 }

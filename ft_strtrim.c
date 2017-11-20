@@ -6,26 +6,65 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:25:52 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/17 14:52:56 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/20 19:25:11 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_sizeword(const char *s)
+static int	is_separate(char c)
+{
+	if (c == ' ' || c == '\n' || c == '\t')
+		return (1);
+	return (0);
+}
+
+static int	ft_nb_word(const char *s)
 {
 	int i;
 	int ret;
 
 	i = 0;
 	ret = 0;
-	while (s[i] == ' ' && s[i] == '\t' && s[i] == '\n')
-		i++;
-	while (s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
+	while (s && s[i])
 	{
-		ret++;
-		i++;
+		while (s[i] && (is_separate(s[i])))
+			i++;
+		if (s[i] && !(is_separate(s[i])))
+			ret++;
+		while (s[i] && !(is_separate(s[i])))
+			i++;
 	}
+//	printf ("nb_word == %d\n", ret);
+	return (ret);
+}
+
+static int	ft_sizestring(const char *s)
+{
+	int i;
+	int ret;
+	int	nb_word;
+
+	i = 0;
+	ret = 0;
+	nb_word = ft_nb_word(s);
+	while (s[i] && (is_separate(s[i])))
+		i++;
+	while (nb_word)
+	{
+		while (s[i] && !(is_separate(s[i])))
+		{
+			ret++;
+			i++;
+		}
+		nb_word--;
+		while (nb_word && s[i] && (is_separate(s[i])))
+		{
+			ret++;
+			i++;
+		}
+	}
+//	printf("sizestring is = %d\n", ret);
 	return (ret);
 }
 
@@ -38,17 +77,25 @@ char		*ft_strtrim(char const *s)
 
 	i = 0;
 	j = 0;
-	len = ft_sizeword(s);
+	len = ft_sizestring(s);
+	
 	if ((str = ft_strnew(len)) == NULL)
 		return (NULL);
-	while (s[i] == ' ' && s[i] == '\t' && s[i] == '\n')
+	while (is_separate(s[i]))
 		i++;
-	while (s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
+	while (len)
 	{
 		((char*)str)[j] = ((char*)s)[i];
 		j++;
 		i++;
+		len--;
 	}
 	((char*)str)[j] = '\0';
 	return (char*)(str);
 }
+/*
+int	main(int ac, char **av)
+{
+	printf("%s\n", ft_strtrim(av[1]));
+}
+*/

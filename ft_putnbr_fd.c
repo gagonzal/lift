@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:39:41 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/17 17:19:14 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/20 19:50:04 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(min + '0', fd);
 	else
 	{
-		ft_putnbr(min / 10);
-		ft_putnbr(min % 10);
+		ft_putnbr_fd(min / 10, fd);
+		ft_putnbr_fd(min % 10, fd);
 	}
 }
