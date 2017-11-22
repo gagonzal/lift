@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:37:57 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/16 15:39:12 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/21 16:34:52 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putendl_fd(char const *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	ft_putchar('\n');
+	ft_putchar_fd('\n', fd);
 }

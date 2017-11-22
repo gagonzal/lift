@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:43:29 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/17 17:41:29 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/21 16:54:33 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static int	ft_sizenb(int c)
 	ret = 0;
 	if (c == -2147483648)
 		ret = 11;
+	if (c == 0)
+		ret = 1;
 	if (c < 0 && c != -2147483648)
 	{
 		c = c * -1;
@@ -56,9 +58,9 @@ char		*ft_itoa(int c)
 	if ((str = malloc(sizeof(char) * len + 1)) == NULL)
 		return (NULL);
 	str[len] = '\0';
-	if (c > 0)
+	if (c >= 0)
 	{
-		while (len-- >= 0)
+		while (len-- > 0)
 		{
 			str[len] = c % 10 + 48;
 			c = c / 10;
@@ -68,3 +70,8 @@ char		*ft_itoa(int c)
 		str = ft_negitoa(str, c, len);
 	return (str);
 }
+/*
+int	main(void)
+{
+	printf("%s", ft_itoa(156));
+}*/

@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:25:52 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/20 19:25:11 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/22 00:03:13 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char		*ft_strtrim(char const *s)
 		return (NULL);
 	while (is_separate(s[i]))
 		i++;
-	while (len)
+	while (s[i] && len)
 	{
 		((char*)str)[j] = ((char*)s)[i];
 		j++;

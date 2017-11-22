@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 16:32:14 by gagonzal          #+#    #+#             */
-/*   Updated: 2017/11/20 19:44:27 by gagonzal         ###   ########.fr       */
+/*   Updated: 2017/11/21 23:43:32 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char		**ft_strsplit(const char *s, char c)
 	j = 0;
 	if ((tab = (char**)malloc(sizeof(char*) * (nb_words(s, c) + 1))) == NULL)
 		return (tab);
-	while (s[i])
+	while (s && s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
